@@ -6,48 +6,6 @@ from tkinter import ttk
 import mysql.connector as mysql
 
 
-def update():
-    nom = e_nom.get()
-
-    if(nom==""):
-        messagebox.showinfo('Insertion', "formulaire incomplet")
-    else:
-        conn = mysql.connect(host="localhost", user="root", password='', database='info')
-        cursor = conn.cursor()
-    
-  
-        
-        cursor.execute("update user set nom = %s where id =%s", (
-
-        e_nom.get(),
-        1
-        ))
-        conn.commit()
-        messagebox.showinfo('succes', "modif ajouter")
-        conn.close()
-
-
-def insert():
-    nom = e_nom.get()
-
-    if(nom==""):
-        messagebox.showinfo('Insertion', "formulaire incomplet")
-    else:
-        conn = mysql.connect(host="localhost", user="root", password='', database='info')
-        cursor = conn.cursor()
-   
-
-        #req = 'insert into user(nom) values(nom)'
-        query = "insert into user (nom) values (%s)"
-        data = (nom, )
-        # val = (cursor.lastrowid, nomxx)
-        cursor.execute(query, data)
-        conn.commit()
-        
-        messagebox.showinfo('succes', "Patient ajouté")
-        conn.close()
-
-
 fen_princ = Tk()
 fen_princ.title("Gestion des comptes-rendus")
 fen_princ.geometry("1300x700")
