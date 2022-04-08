@@ -41,12 +41,8 @@ class Formulaire:
 
         #valider le formulaire
         btn = Button(frame1, text = "Créer", cursor="hand2", command=self.creer, font = ("Arial", 15, "bold"),bg = "darkblue", fg = "yellow").place(x=250, y= 430, width=250)
-    
-        btn1 = Button(frame1, text = "Créer", cursor="hand2", command=self.quit, font = ("Arial", 15, "bold"),bg = "darkblue", fg = "yellow").place(x=250, y= 200, width=250)
-    
-    def quit(self):
-       self.root.destroy()
-
+        btn = Button(frame1, text = "login", cursor="hand2", command=self.login, font = ("Arial", 15, "bold"),bg = "darkblue", fg = "yellow").place(x=250, y= 330, width=250)
+        
     def creer(self):
             if self.ecri_prenom.get()=="" or self.ecri_email.get()=="" or self.ecri_nom.get()=="" or self.ecri_mdp.get()=="":
                 messagebox.showerror("erreur", "remplir les champs", parent=self.root)
@@ -67,7 +63,9 @@ class Formulaire:
             conn.close()
 
 
-
+    def login(self):
+        self.root.destroy()
+        import login
 
 
 root=Tk()
