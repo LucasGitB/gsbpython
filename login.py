@@ -40,9 +40,9 @@ class Formulaire:
                 messagebox.showerror("erreur", "remplir les champs", parent=self.root)
             else:
             
-                conn = mysql.connect(host="localhost", user="root", password='', database='info')
+                conn = mysql.connect(host="192.168.56.104", user="gsbpython", password='gsbgsbgsb', database='gsbpython')
                 cursor = conn.cursor()
-                cursor.execute('select * from user where mail=%s and password=%s',
+                cursor.execute('select * from visiteur where Mail=%s and Password=%s',
                 (
                     self.ecri_email.get(),
                     self.ecri_mdp.get()
@@ -53,7 +53,7 @@ class Formulaire:
                 else:
                     messagebox.showinfo("Succes", "Bienvenu")
                     self.root.destroy()
-                    import Etudiant
+                    import menu
                     conn.close()
 
 
