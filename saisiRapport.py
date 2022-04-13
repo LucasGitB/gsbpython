@@ -15,7 +15,7 @@ class Etudiant:
         Gestion_Frame = Frame(self.root, bd=5, bg="white")
         Gestion_Frame.place(x=50, y=50, width=1200, height=700)
 
-        Gestion_title = Label(Gestion_Frame, text="Compte rendu", font=("Arial", 20, "bold"), bg="#0685F6", fg="white").place(x=50, y=50)
+        Gestion_title = Label(Gestion_Frame, text="Compte-rendu", font=("Arial", 20, "bold"), bg="#0685F6", fg="white").place(x=50, y=50)
 
         #Id Pratitient
         # idPratitient = tk.Label(root, text = "veuillez")
@@ -26,7 +26,7 @@ class Etudiant:
         # liste.pack()
 
 
-        idPratitient = Label(Gestion_Frame, text="Praticient", font=("Arial", 20, "bold"), bg="white", fg="#0685F6").place(x=50, y=150)
+        idPratitient = Label(Gestion_Frame, text="Praticien", font=("Arial", 20, "bold"), bg="white", fg="#0685F6").place(x=50, y=150)
         
         liste = ttk.Combobox(Gestion_Frame, font=("Arial", 13, "bold"), state='readonly')
         liste["values"]=("Jean Durant", "François Duvier", "Nicolas Piret")
@@ -40,7 +40,7 @@ class Etudiant:
         id_txt = Entry(Gestion_Frame, font=("Arial", 13, "bold"), bg="white", fg="black").place(x=220, y=210)
 
         #Nom motif visite
-        idMotif = Label(Gestion_Frame, text="Motif Visite", font=("Arial", 20, "bold"), bg="white", fg="#0685F6").place(x=50, y=270)
+        idMotif = Label(Gestion_Frame, text="Motif visite", font=("Arial", 20, "bold"), bg="white", fg="#0685F6").place(x=50, y=270)
         nom_txt = Entry(Gestion_Frame, font=("Arial", 13, "bold"), bg="white", fg="black").place(x=220, y=270)
 
         #Bilan 
@@ -48,19 +48,19 @@ class Etudiant:
         bilan_txt = Text(Gestion_Frame, font=("Arial", 13, "bold"), bg="white", fg="black").place(x=220, y=330, width=300,height=300)
 
         #medicaments
-        idBilan = Label(Gestion_Frame, text="Medicaments", font=("Arial", 20, "bold"), bg="white", fg="#0685F6").place(x=550, y=150)
+        idBilan = Label(Gestion_Frame, text="Médicaments", font=("Arial", 20, "bold"), bg="white", fg="#0685F6").place(x=550, y=150)
         bilan_txt = Text(Gestion_Frame, font=("Arial", 13, "bold"), bg="white", fg="black").place(x=780, y=150, width=300,height=300)
 
         #Button ajouter
         btn = Button(Gestion_Frame, text = "Valider", cursor="hand2", font = ("Arial", 15, "bold"),bg = "#0685F6", fg = "white").place(x=600, y=600, width=120)
-        #Retour menu 
+        #Retour accueil 
         btn = Button(Gestion_Frame, text = "Accueil", cursor="hand2", command=self.accueil, font = ("Arial", 15, "bold"),bg = "#0685F6", fg = "white").place(x=900, y=600, width=120)
 
 
 
     def accueil(self):
         self.root.destroy()
-        import menu
+        import accueil
 
 
 

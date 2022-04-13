@@ -7,14 +7,14 @@ from turtle import back, title
 from tkinter import ttk
 import mysql.connector as mysql
 
-class Formulaire:
+class Connexion:
     def __init__(self, root):
         self.root = root
-        self.root.title("Formulaire")
+        self.root.title("Connexion")
         self.root.geometry("1920x1080+0+0")
 
 
-        #champs du formulaire
+        #champs du connexion
         frame1 = Frame(self.root, bg="white")
         frame1.place(x=500, y=200, width=700, height=500)
 
@@ -30,9 +30,9 @@ class Formulaire:
         self.ecri_mdp = Entry(frame1, font=("arial", 15), bg="white")
         self.ecri_mdp.place(x=50, y=200, width=250)
 
-        #valider le formulaire
-        btn = Button(frame1, text = "connexion", cursor="hand2", command=self.connexion, font = ("Arial", 15, "bold"),bg = "#0685F6", fg = "white").place(x=200, y=430, width=120)
-        btn = Button(frame1, text = "inscription", cursor="hand2", command=self.inscription, font = ("Arial", 15, "bold"),bg = "#0685F6", fg = "white").place(x=350, y=430 , width=120)
+        #valider la connexion
+        btn = Button(frame1, text = "Connexion", cursor="hand2", command=self.connexion, font = ("Arial", 15, "bold"),bg = "#0685F6", fg = "white").place(x=200, y=430, width=120)
+        btn = Button(frame1, text = "Inscription", cursor="hand2", command=self.inscription, font = ("Arial", 15, "bold"),bg = "#0685F6", fg = "white").place(x=350, y=430 , width=120)
 
 
     def connexion(self):
@@ -49,11 +49,11 @@ class Formulaire:
                 ))
                 row=cursor.fetchone()
                 if row == None:
-                    messagebox.showerror("Erreur", "identifiants incorrects", parent=self.root)
+                    messagebox.showerror("Erreur", "Identifiants incorrects", parent=self.root)
                 else:
-                    messagebox.showinfo("Succes", "Bienvenu")
+                    messagebox.showinfo("Connecté", "Bienvenue !")
                     self.root.destroy()
-                    import menu
+                    import accueil
                     conn.close()
 
 
@@ -64,5 +64,5 @@ class Formulaire:
 
 
 root=Tk()
-obj = Formulaire(root)
+obj = Connexion(root)
 root.mainloop()
