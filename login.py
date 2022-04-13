@@ -7,6 +7,12 @@ from turtle import back, title
 from tkinter import ttk
 import mysql.connector as mysql
 
+import sys
+sys.path.append("connect")
+import connect as i
+
+
+
 class Connexion:
     def __init__(self, root):
         self.root = root
@@ -40,7 +46,7 @@ class Connexion:
                 messagebox.showerror("erreur", "remplir les champs", parent=self.root)
             else:
             
-                conn = mysql.connect(host="192.168.56.102", user="test", password='test', database='gsbpython')
+                conn = i.idBdd
                 cursor = conn.cursor()
                 cursor.execute('select * from visiteur where Mail=%s and Password=MD5(%s)',
                 (
