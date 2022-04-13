@@ -7,32 +7,29 @@ from turtle import back, title
 from tkinter import ttk
 import mysql.connector as mysql
 
-class Formulaire:
+class Menu:
     def __init__(self, root):
         self.root = root
-        self.root.title("Formulaire")
-        self.root.geometry("1920x1080+0+0")
+        self.root.title("Menu")
+        self.root.geometry("1920x1080")
 
 
-        #champs du formulaire
-        frame1 = Frame(self.root, bg="grey")
-        frame1.place(x=500, y=200, width=700, height=500)
+        #champs du menu
+        frame1 = Frame(self.root, bg="white")
+        frame1.place(x=0, y=0, width=300, height=1080)
 
-       
 
-        #valider le formulaire
-        btn1 = Button(frame1, text = "Comptes-rendus", font = ("Arial", 15, "bold"),bg = "darkblue", fg = "yellow").place(x=250, y= 100, width=250)
-        btn1 = Button(frame1, text = "Visiteurs", font = ("Arial", 15, "bold"),bg = "darkblue", fg = "yellow").place(x=250, y= 150, width=250)
-        btn1 = Button(frame1, text = "Praticiens",  font = ("Arial", 15, "bold"),bg = "darkblue", fg = "yellow").place(x=250, y= 200, width=250)
-        btn1 = Button(frame1, text = "Médicaments", font = ("Arial", 15, "bold"),bg = "darkblue", fg = "yellow").place(x=250, y= 250, width=250)
-    
-        btn1 = Button(frame1, text = "Quitter", command=self.quit, font = ("Arial", 15, "bold"),bg = "darkblue", fg = "yellow").place(x=250, y= 300, width=250)
+        #valider le menu
+        btn1 = Button(frame1, text = "Comptes-rendus", font = ("Arial", 15, "bold"),bg = "#0685F6", fg = "white").place(x=25, y=50, width=250)
+        btn1 = Button(frame1, text = "Visiteurs", font = ("Arial", 15, "bold"),bg = "#0685F6", fg = "white").place(x=25, y=100, width=250)
+        btn1 = Button(frame1, text = "Praticiens",  font = ("Arial", 15, "bold"),bg = "#0685F6", fg = "white").place(x=25, y=150, width=250)
+        btn1 = Button(frame1, text = "Médicaments", font = ("Arial", 15, "bold"),bg = "#0685F6", fg = "white").place(x=25, y=200, width=250)
+        btn1 = Button(frame1, text = "Quitter", command=self.quit, font = ("Arial", 15, "bold"),bg = "#0685F6", fg = "white").place(x=25, y=250, width=250)
     
     def quit(self):
        self.root.destroy()
 
-    
 
 root=Tk()
-obj = Formulaire(root)
+obj = Menu(root)
 root.mainloop()
