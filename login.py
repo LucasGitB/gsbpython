@@ -53,15 +53,13 @@ class Formulaire:
                 else:
                     messagebox.showinfo("Succes", "Bienvenu")
                     self.root.destroy()
-                    import menu
+                    import saisiRapport
                     conn.close()
 
 
     def inscription(self):
         self.root.destroy()
         import inscription
-
-
 
 
 
