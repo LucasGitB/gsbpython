@@ -53,7 +53,7 @@ class Formulaire:
                 else:
                     messagebox.showinfo("Succes", "Bienvenu")
                     self.root.destroy()
-                    import saisiRapport
+                    import menu
                     conn.close()
 
 

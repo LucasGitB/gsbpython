@@ -20,7 +20,7 @@ class Menu:
 
 
         #valider le menu
-        btn1 = Button(frame1, text = "Comptes-rendus", font = ("Arial", 15, "bold"),bg = "#0685F6", fg = "white").place(x=25, y=50, width=250)
+        btn1 = Button(frame1, text = "Comptes-rendus", command=self.rapport, font = ("Arial", 15, "bold"),bg = "#0685F6", fg = "white").place(x=25, y=50, width=250)
         btn1 = Button(frame1, text = "Visiteurs", font = ("Arial", 15, "bold"),bg = "#0685F6", fg = "white").place(x=25, y=100, width=250)
         btn1 = Button(frame1, text = "Praticiens",  font = ("Arial", 15, "bold"),bg = "#0685F6", fg = "white").place(x=25, y=150, width=250)
         btn1 = Button(frame1, text = "Médicaments", font = ("Arial", 15, "bold"),bg = "#0685F6", fg = "white").place(x=25, y=200, width=250)
@@ -28,6 +28,10 @@ class Menu:
     
     def quit(self):
        self.root.destroy()
+
+    def rapport(self):
+        self.root.destroy()
+        import saisiRapport
 
 
 root=Tk()

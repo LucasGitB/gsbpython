@@ -53,6 +53,15 @@ class Etudiant:
 
         #Button ajouter
         btn = Button(Gestion_Frame, text = "Valider", cursor="hand2", font = ("Arial", 15, "bold"),bg = "#0685F6", fg = "white").place(x=600, y=600, width=120)
+        #Retour menu 
+        btn = Button(Gestion_Frame, text = "Accueil", cursor="hand2", command=self.accueil, font = ("Arial", 15, "bold"),bg = "#0685F6", fg = "white").place(x=900, y=600, width=120)
+
+
+
+    def accueil(self):
+        self.root.destroy()
+        import menu
+
 
 
 root=Tk()
