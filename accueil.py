@@ -31,7 +31,7 @@ class Accueil:
 
     def rapport(self):
         self.root.destroy()
-        import saisiRapport
+        import AfficheRapport
 
 
 root=Tk()

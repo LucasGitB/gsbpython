@@ -7,6 +7,10 @@ from turtle import back, title
 from tkinter import ttk
 import mysql.connector as mysql
 
+import sys
+sys.path.append("connect")
+import connect as i
+
 class Formulaire:
     def __init__(self, root):
         self.root = root
@@ -39,6 +43,10 @@ class Formulaire:
         self.ecri_mdp = Entry(frame1, font=("arial", 15, "bold"), bg="lightgrey")
         self.ecri_mdp.place(x=370, y=230, width=250)
 
+        aff_r = Label(frame1, text="role", font=("arial", 15, "bold"), bg="grey", fg="black").place(x=370, y=200)
+        self.ecri_r = Entry(frame1, font=("arial", 15, "bold"), bg="lightgrey")
+        self.ecri_r.place(x=370, y=300, width=250)
+
         #valider le formulaire
         btn = Button(frame1, text = "Créer", cursor="hand2", command=self.creer, font = ("Arial", 15, "bold"),bg = "darkblue", fg = "yellow").place(x=250, y= 430, width=250)
         btn = Button(frame1, text = "login", cursor="hand2", command=self.login, font = ("Arial", 15, "bold"),bg = "darkblue", fg = "yellow").place(x=250, y= 330, width=250)
@@ -48,14 +56,15 @@ class Formulaire:
                 messagebox.showerror("erreur", "remplir les champs", parent=self.root)
             else:
             
-                conn = mysql.connect(host="192.168.56.102", user="test", password='test', database='gsbpython')
+                conn = i.idBdd
                 cursor = conn.cursor()
-                cursor.execute('insert into visiteur (nom, prenom, Mail, Password) values(%s, %s, %s, MD5(%s))',
+                cursor.execute('insert into utilisateur (nom, prenom, Mail, Password, role) values(%s, %s, %s, MD5(%s), %s)',
                 (
                     self.ecri_nom.get(),
                     self.ecri_prenom.get(),
                     self.ecri_email.get(),
-                    self.ecri_mdp.get()
+                    self.ecri_mdp.get(),
+                    self.ecri_r.get()
                 ))
 
             conn.commit()

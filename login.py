@@ -39,7 +39,13 @@ class Connexion:
         #valider la connexion
         btn = Button(frame1, text = "Connexion", cursor="hand2", command=self.connexion, font = ("Arial", 15, "bold"),bg = "#0685F6", fg = "white").place(x=200, y=430, width=120)
         btn = Button(frame1, text = "Inscription", cursor="hand2", command=self.inscription, font = ("Arial", 15, "bold"),bg = "#0685F6", fg = "white").place(x=350, y=430 , width=120)
-
+    
+    # def checkrole(num):
+    #     switch={
+    #         1: 1,
+    #         2:2
+    #     }
+    #     return switch.get(num,"Invalid input")
 
     def connexion(self):
             if self.ecri_email.get()=="" or self.ecri_mdp.get()=="":
@@ -48,25 +54,33 @@ class Connexion:
             
                 conn = i.idBdd
                 cursor = conn.cursor()
-                cursor.execute('select * from visiteur where Mail=%s and Password=MD5(%s)',
+                cursor.execute('select * from utilisateur where Mail=%s and Password=MD5(%s)',
                 (
                     self.ecri_email.get(),
                     self.ecri_mdp.get()
                 ))
                 row=cursor.fetchone()
+                
                 if row == None:
                     messagebox.showerror("Erreur", "Identifiants incorrects", parent=self.root)
+                    
                 else:
                     messagebox.showinfo("Connecté", "Bienvenue !")
                     self.root.destroy()
-                    import accueil
+                    if row[5] == 1:
+                        import accueil
+                    elif row[5] == 2:
+                        import inscription
+                        
                     conn.close()
+
 
 
     def inscription(self):
         self.root.destroy()
         import inscription
 
+    
 
 
 root=Tk()

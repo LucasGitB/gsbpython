@@ -26,7 +26,7 @@ class Etudiant:
         # liste.pack()
 
 
-        idPratitient = Label(Gestion_Frame, text="Praticien", font=("Arial", 20, "bold"), bg="white", fg="#0685F6").place(x=50, y=150)
+        idPratitient = Label(Gestion_Frame, text="Pratitien", font=("Arial", 20, "bold"), bg="white", fg="#0685F6").place(x=50, y=150)
         
         liste = ttk.Combobox(Gestion_Frame, font=("Arial", 13, "bold"), state='readonly')
         liste["values"]=("Jean Durant", "François Duvier", "Nicolas Piret")
