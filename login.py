@@ -7,6 +7,8 @@ from turtle import back, title
 from tkinter import ttk
 import mysql.connector as mysql
 
+
+
 import sys
 sys.path.append("connect")
 import connect as i
@@ -60,7 +62,7 @@ class Connexion:
                     self.ecri_mdp.get()
                 ))
                 row=cursor.fetchone()
-                
+
                 if row == None:
                     messagebox.showerror("Erreur", "Identifiants incorrects", parent=self.root)
                     
@@ -68,7 +70,12 @@ class Connexion:
                     messagebox.showinfo("Connecté", "Bienvenue !")
                     self.root.destroy()
                     if row[5] == 1:
-                        import accueil
+                        # import accueil
+                        # accueil.affichage(row[0])
+                        import test
+                        test.affichage(row[0])
+
+            
                     elif row[5] == 2:
                         import inscription
                         

@@ -21,6 +21,17 @@ class Etudiant:
 
         Gestion_title = Label(Gestion_Frame, text="Compte-rendu", font=("Arial", 20, "bold"), bg="#0685F6", fg="white").place(x=50, y=50)
 
+
+        #Variable
+        self.DateRapport = StringVar()
+        self.MotifVisite = StringVar()
+        self.Bilan = StringVar()
+        self.Prescription = StringVar()
+        self.medicament = StringVar()
+        self.nbrMedicament = StringVar()
+
+
+
         #Id Pratitient
         # idPratitient = tk.Label(root, text = "veuillez")
         # idPratitient.pack()
@@ -40,6 +51,8 @@ class Etudiant:
         cursor.execute('select nom, prenom from praticien')
         row=cursor.fetchall()
         print(row)
+
+
         lstVal = ""
         for praticien in row: 
             lstVal += "{0} {1}," .format(praticien[0], praticien[1])
@@ -55,29 +68,46 @@ class Etudiant:
    
 
         #Id Date
-        iddate = Label(Gestion_Frame, text="Date visite", font=("Arial", 20, "bold"), bg="white", fg="#0685F6").place(x=50, y=210)
-        id_txt = Entry(Gestion_Frame, font=("Arial", 13, "bold"), bg="white", fg="black").place(x=220, y=210)
+        iddate = Label(Gestion_Frame,  text="Date visite", font=("Arial", 20, "bold"), bg="white", fg="#0685F6").place(x=50, y=210)
+        id_txt = Entry(Gestion_Frame, textvariable=self.DateRapport, font=("Arial", 13, "bold"), bg="white", fg="black").place(x=220, y=210)
 
         #Nom motif visite
-        idMotif = Label(Gestion_Frame, text="Motif visite", font=("Arial", 20, "bold"), bg="white", fg="#0685F6").place(x=50, y=270)
-        nom_txt = Entry(Gestion_Frame, font=("Arial", 13, "bold"), bg="white", fg="black").place(x=220, y=270)
+        idMotif = Label(Gestion_Frame,  text="Motif visite", font=("Arial", 20, "bold"), bg="white", fg="#0685F6").place(x=50, y=270)
+        nom_txt = Entry(Gestion_Frame, textvariable=self.MotifVisite, font=("Arial", 13, "bold"), bg="white", fg="black").place(x=220, y=270)
 
         #Bilan 
-        idBilan = Label(Gestion_Frame, text="Bilan", font=("Arial", 20, "bold"), bg="white", fg="#0685F6").place(x=50, y=330)
-        bilan_txt = Text(Gestion_Frame, font=("Arial", 13, "bold"), bg="white", fg="black").place(x=220, y=330, width=300,height=300)
+        idBilan = Label(Gestion_Frame,  text="Bilan", font=("Arial", 20, "bold"), bg="white", fg="#0685F6").place(x=50, y=330)
+        bilan_txt = Text(Gestion_Frame, textvariable=self.Bilan, font=("Arial", 13, "bold"), bg="white", fg="black").place(x=220, y=330, width=300,height=300)
 
         #medicaments
-        idBilan = Label(Gestion_Frame, text="Médicaments", font=("Arial", 20, "bold"), bg="white", fg="#0685F6").place(x=550, y=150)
-        bilan_txt = Text(Gestion_Frame, font=("Arial", 13, "bold"), bg="white", fg="black").place(x=780, y=150, width=300,height=300)
+        idMedicament = Label(Gestion_Frame,  text="Médicaments", font=("Arial", 20, "bold"), bg="white", fg="#0685F6").place(x=550, y=150)
+        medicament_txt = Text(Gestion_Frame, textvariable=self.medicament, font=("Arial", 13, "bold"), bg="white", fg="black").place(x=780, y=150, width=300,height=300)
 
         #Button ajouter
-        btn = Button(Gestion_Frame, text = "Valider", cursor="hand2", font = ("Arial", 15, "bold"),bg = "#0685F6", fg = "white").place(x=600, y=600, width=120)
+        btn = Button(Gestion_Frame, text = "Valider", cursor="hand2", command=self.creer, font = ("Arial", 15, "bold"),bg = "#0685F6", fg = "white").place(x=600, y=600, width=120)
         #Retour accueil 
         btn = Button(Gestion_Frame, text = "Accueil", cursor="hand2", command=self.accueil, font = ("Arial", 15, "bold"),bg = "#0685F6", fg = "white").place(x=900, y=600, width=120)
 
 
 
+    def creer(self):
+            if self.DateRapport.get()=="" or self.MotifVisite.get()=="" or self.Bilan.get()=="" or self.medicament.get()=="":
+                messagebox.showerror("erreur", "remplir les champs", parent=self.root)
+            else:
+            
+                conn = i.idBdd
+                cursor = conn.cursor()
+                cursor.execute('insert into rapport (DateRapport, MotifVisite, Bilan, medicament) values(%s ,%s, %s, %s)',
+                (
+                    self.DateRapport.get(),
+                    self.MotifVisite.get(),
+                    self.Bilan.get(),
+                    self.medicament.get(),
+                ))
 
+            conn.commit()
+            messagebox.showinfo('succes', "visiteur ajouté")
+            conn.close()
                 
 
     def accueil(self):
