@@ -49,6 +49,18 @@ class Connexion:
     #     }
     #     return switch.get(num,"Invalid input")
 
+
+        # conn = i.idBdd
+        # cursor = conn.cursor()
+        # cursor.execute('select * from rapport')
+        # rapportlist = cursor.fetchall()
+
+        # for rapport in rapportlist:
+        #     print('Bilan : {}'.format(rapport[3]))
+            
+        # conn.commit()
+        # conn.close()
+
     def connexion(self):
             if self.ecri_email.get()=="" or self.ecri_mdp.get()=="":
                 messagebox.showerror("erreur", "remplir les champs", parent=self.root)
@@ -72,12 +84,13 @@ class Connexion:
                     if row[5] == 1:
                         # import accueil
                         # accueil.affichage(row[0])
-                        import test
-                        test.affichage(row[0])
+                        import test2
+                        test2.affichage(row[0])
 
             
                     elif row[5] == 2:
-                        import inscription
+                        import test
+                        test.affichage(row[0])
                         
                     conn.close()
 

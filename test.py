@@ -13,6 +13,7 @@ class Rapport:
     def __init__(self, root, idUser):
         self.root = root
         self.user = idUser
+        print(idUser)
         self.root.title("Formulaire")
         self.root.geometry("1920x1080")
 
@@ -30,6 +31,7 @@ class Rapport:
         self.Prescription = StringVar()
         self.medicament = StringVar()
         self.nbrMedicament = StringVar()
+        self.Pratiti = StringVar()
 
 
 
@@ -41,15 +43,42 @@ class Rapport:
         # liste.current(0)
         # liste.pack()
 
+        liste = ttk.Combobox(Gestion_Frame, font=("Arial", 13, "bold"), state='readonly')
+
+        conn = i.idBdd
+        cursor = conn.cursor()
+        cursor.execute('select nom, prenom from praticien')
+        row=cursor.fetchall()
+        print(row)
+
+
+        lstVal = ""
+        for praticien in row: 
+            lstVal += "{0} {1}," .format(praticien[0], praticien[1])
+
+        # print(lstVal)
+        valuesLst = lstVal.split(',')
+        
+        print(valuesLst)
+        # liste['values'] = valuesLst
+        # liste.current(0)
+        # liste.pack()
+        # liste.place(x=220, y=150)
+        self.listeM = ttk.Combobox(Gestion_Frame, textvariable=self.Pratiti, font=("arial", 20), state="readonly")
+        self.listeM['values'] = valuesLst
+        self.listeM.place(x=220, y=150, width=250)
+        self.listeM.current(0)
+
 
         
         idPratitient = Label(Gestion_Frame, text="Pratitien", font=("Arial", 20, "bold"), bg="white", fg="#0685F6").place(x=50, y=150)
         
         idDate = Label(Gestion_Frame, text="Bilan", font=("arial", 20), bg="cyan")
         idDate.place(x=50, y=150)
+        
 
-        id_text = Entry(Gestion_Frame, textvariable=self.DateRapport, font=("arial", 20), bg="cyan")
-        id_text.place(x=220, y=150)
+        # id_text = Entry(Gestion_Frame, textvariable=self.DateRapport, font=("arial", 20), bg="cyan")
+        # id_text.place(x=220, y=150)
 
 #####
         idMotifVisite = Label(Gestion_Frame, text="Bilan", font=("arial", 20), bg="cyan")
@@ -75,10 +104,62 @@ class Rapport:
     #Button ajouter
         btn = Button(Gestion_Frame, text = "Valider", cursor="hand2", command=self.creer, font = ("Arial", 15, "bold"),bg = "#0685F6", fg = "white").place(x=600, y=600, width=120)
         
+        tree = ttk.Treeview(root, columns= (1,2,3,4,5), height=5, show = "headings")
+        tree.place(x=650, y = 170, width=800, height=175)
 
+        tree.heading(1, text= "Date")
+        tree.heading(2, text= "Motif")
+        tree.heading(3, text= "Bilan")
+        tree.heading(4, text= "Medicament")
+        tree.heading(5, text= "IdVisiteur")
+
+        tree.column(1, width=50)
+        tree.column(2, width=50)
+        tree.column(3, width=100)
+        tree.column(4, width=100)
+        tree.column(5, width=50)
+
+        tree.bind(self.information)
+
+
+
+
+
+
+
+        conn = i.idBdd
+        cursor = conn.cursor()
+        idVisiteur = idUser
+        cursor.execute('select * from rapport where idVisiteur = {}'.format(idUser))
+
+        
+        rapportlist = cursor.fetchall()
+
+
+
+        for rapport in rapportlist:
+            tree.insert('', END, values= rapport)
+
+        #     print('Bilan : {}'.format(rapport[3]))
+
+        conn.commit()
+     
  
 
 
+        # conn = i.idBdd
+        # cursor = conn.cursor()
+        # # idVisiteur = idUser
+        # select = cursor.execute('select * from rapport where idVisiteur = {}'.format(idUser))
+
+        # for row in select:
+        #     tree.insert('', END, values= row)
+        # # rapportlist = cursor.fetchall()
+
+        # # for rapport in rapportlist:
+        # #     print('Bilan : {}'.format(rapport[3]))
+
+      
     def creer(self):
             if self.Bilan.get()=="":
                 messagebox.showerror("erreur", "remplir les champs", parent=self.root)
@@ -88,7 +169,7 @@ class Rapport:
                 cursor = conn.cursor()
                 cursor.execute('insert into rapport (DateRapport, MotifVisite, Bilan, medicament, idVisiteur) values(%s, %s, %s, %s, %s)',
                 (
-                    self.DateRapport.get(),
+                    self.Pratiti.get(),
                     self.MotifVisite.get(),
                     self.Bilan.get(),
                     self.medicament.get(),
@@ -98,6 +179,15 @@ class Rapport:
             conn.commit()
             messagebox.showinfo('succes', "Rapport ajouté !")
             conn.close()
+
+
+    def information(self, ev):
+        cursors_row = self.tree.focus()
+        contents = self.tree.item(cursors_row)
+        row = contents["values"]
+        self.Bilan.set(row[0])
+        
+        
                 
 
 def affichage(user):
