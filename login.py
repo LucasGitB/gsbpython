@@ -84,13 +84,13 @@ class Connexion:
                     if row[5] == 1:
                         # import accueil
                         # accueil.affichage(row[0])
-                        import test2
-                        test2.affichage(row[0])
+                        import VisiteurRapport
+                        VisiteurRapport.affichage(row[0])
 
             
                     elif row[5] == 2:
-                        import test
-                        test.affichage(row[0])
+                        import ManagerRapport
+                        ManagerRapport.affichage(row[0])
                         
                     conn.close()
 

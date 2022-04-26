@@ -10,9 +10,10 @@ import mysql.connector as mysql
 
 class Accueil:
     def __init__(self, root, idUser):
-    
+        
         self.root = root
         self.user = idUser
+        print(idUser)
         self.root.title("Accueil")
         self.root.geometry("1920x1080")
 
@@ -36,7 +37,8 @@ class Accueil:
 
     def rapport(self):
         self.root.destroy()
-        import AfficheRapport
+        import VisiteurRapport
+        VisiteurRapport
 
     def define_user(self, user):
         self.user = user

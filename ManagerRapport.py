@@ -52,12 +52,12 @@ class Rapport:
         # print(lstVal)
         valuesLst = lstVal.split(',')
         
-        self.listeM = ttk.Combobox(Gestion_Frame, textvariable=self.Pratiti, font=("arial", 20), state="readonly")
+        self.listeM = ttk.Combobox(Gestion_Frame, textvariable=self.Pratiti, font=("arial", 12), state="readonly")
         self.listeM['values'] = valuesLst
         self.listeM.place(x=220, y=150, width=250)
         self.listeM.current(0)
 
-        idPratitient = Label(Gestion_Frame, text="Pratitien", font=("Arial", 20, "bold"), bg="white", fg="#0685F6").place(x=50, y=150)
+        idPratitient = Label(Gestion_Frame, text="Pratitien", font=("Arial", 12, "bold"), bg="white", fg="#0685F6").place(x=50, y=150)
         
 
 
@@ -65,59 +65,58 @@ class Rapport:
 
 ########
         
-        idPratitient = Label(Gestion_Frame, text="Pratitien", font=("Arial", 20, "bold"), bg="white", fg="#0685F6").place(x=50, y=150)
+        idPratitient = Label(Gestion_Frame, text="Pratitien", font=("Arial", 12, "bold"), bg="white", fg="#0685F6").place(x=50, y=150)
         
-        idDate = Label(Gestion_Frame, text="Date", font=("arial", 20), bg="white", fg="#0685F6")
+        idDate = Label(Gestion_Frame, text="Date", font=("arial", 12, "bold"), bg="white", fg="#0685F6")
         idDate.place(x=50, y=200)
         
 
-        id_text = Entry(Gestion_Frame, textvariable=self.DateRapport, font=("arial", 20), bg="white")
+        id_text = Entry(Gestion_Frame, textvariable=self.DateRapport, font=("arial", 12), bg="white")
         id_text.place(x=220, y=200)
 
 #####
-        idMotifVisite = Label(Gestion_Frame, text="Motif", font=("arial", 20), bg="white", fg="#0685F6")
-        idMotifVisite.place(x=50, y=300)
+        idMotifVisite = Label(Gestion_Frame, text="Motif", font=("arial", 12, "bold"), bg="white", fg="#0685F6")
+        idMotifVisite.place(x=50, y=250)
 
-        id_text = Entry(Gestion_Frame, textvariable=self.MotifVisite, font=("arial", 20), bg="white")
-        id_text.place(x=220, y=300)
+        id_text = Entry(Gestion_Frame, textvariable=self.MotifVisite, font=("arial", 12), bg="white")
+        id_text.place(x=220, y=250)
 
 #####
         # idid = Label(Gestion_Frame, text="Numéro", font=("arial", 20), bg="white", fg="#0685F6")
         # idid.place(x=50, y=400)
 
-        id_text = Entry(Gestion_Frame, textvariable=self.id, font=("arial", 20), bg="white")
-        id_text.place(x=250, y=50, width=50)
+        id_text = Entry(Gestion_Frame, textvariable=self.id, font=("arial", 12), bg="white")
+        id_text.place(x=250, y=50, width=30)
 
 ######
-        idBilan = Label(Gestion_Frame, text="Bilan", font=("arial", 20), bg="white", fg="#0685F6")
-        idBilan.place(x=50, y=450)
+        idBilan = Label(Gestion_Frame, text="Bilan", font=("arial", 12, "bold"), bg="white", fg="#0685F6")
+        idBilan.place(x=50, y=300)
 
-        self.bilan_text = Text(Gestion_Frame, font=("arial", 20), bg="white")
-        self.bilan_text.place(x=220, y=450, height=100)
+        self.bilan_text = Text(Gestion_Frame, font=("arial", 12), bg="white")
+        self.bilan_text.place(x=220, y=300,width=350, height=100)
 
 ######
-        idmedicament = Label(Gestion_Frame, text="Medicament", font=("arial", 20), bg="white", fg="#0685F6")
-        idmedicament.place(x=50, y=600)
+        idmedicament = Label(Gestion_Frame, text="Medicament", font=("arial", 12, "bold"), bg="white", fg="#0685F6")
+        idmedicament.place(x=50, y=430)
 
-        id_text = Entry(Gestion_Frame, textvariable=self.medicament, font=("arial", 20), bg="white")
-        id_text.place(x=220, y=600)
+        id_text = Entry(Gestion_Frame, textvariable=self.medicament, font=("arial", 12), bg="white")
+        id_text.place(x=220, y=430)
 
 # ####
 
 
     #Button ajouter
-        btn = Button(Gestion_Frame, text = "Valider", cursor="hand2", command=self.creer, font = ("Arial", 15, "bold"),bg = "#0685F6", fg = "white").place(x=600, y=600, width=120)
+       
+        btn = Button(Gestion_Frame, text = "Modifier", cursor="hand2", command=self.modifier, font = ("Arial", 15, "bold"),bg = "#0685F6", fg = "white").place(x=200, y=600, width=120)
         
-        btn = Button(Gestion_Frame, text = "Modififier", cursor="hand2", command=self.modifier, font = ("Arial", 15, "bold"),bg = "#0685F6", fg = "white").place(x=750, y=600, width=120)
-        
-        btn = Button(Gestion_Frame, text = "Supprimer", cursor="hand2", command=self.supprimer, font = ("Arial", 15, "bold"),bg = "#0685F6", fg = "white").place(x=880, y=600, width=120)
+        btn = Button(Gestion_Frame, text = "Supprimer", cursor="hand2", command=self.supprimer, font = ("Arial", 15, "bold"),bg = "#0685F6", fg = "white").place(x=350, y=600, width=120)
         
         
 #recherche
         
 
         result_Frame = Frame(Gestion_Frame, bd = 5, bg="#0685F6")
-        result_Frame.place(x=600, y=110, width=700, height=200)
+        result_Frame.place(x=600, y=110, width=850, height=300)
 
         #####affichage
 
@@ -142,7 +141,7 @@ class Rapport:
         self.tabl_result.column(1, width=100)
         self.tabl_result.column(2, width=100)
         self.tabl_result.column(3, width=100)
-        self.tabl_result.column(4, width=100)
+        self.tabl_result.column(4, width=300)
         self.tabl_result.column(5, width=100)
         self.tabl_result.column(6, width=100)
 
@@ -241,7 +240,7 @@ class Rapport:
         cursor = conn.cursor()
         idUser = self.user
         idVisiteur = idUser
-        cursor.execute('select * from rapport where idVisiteur = {}'.format(idUser))
+        cursor.execute('select * from rapport')
         rapportlist = cursor.fetchall()
         if len(rapportlist) != 0:
             self.tabl_result.delete(*self.tabl_result.get_children())
