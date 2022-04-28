@@ -15,7 +15,7 @@ class Rapport:
         self.root = root
         self.user = idUser
         print(idUser)
-        self.root.title("Formulaire")
+        self.root.title("Compte-rendu")
         self.root.geometry("1920x1080")
 
         #formualaire
@@ -57,13 +57,13 @@ class Rapport:
         self.listeM.place(x=220, y=150, width=250)
         self.listeM.current(0)
 
-        idPratitient = Label(Gestion_Frame, text="Praticien", font=("Arial", 12, "bold"), bg="white", fg="#0685F6").place(x=50, y=150)
+        idPraticien = Label(Gestion_Frame, text="Praticien", font=("Arial", 12, "bold"), bg="white", fg="#0685F6").place(x=50, y=150)
         
 
 
 ########
         
-        idPratitient = Label(Gestion_Frame, text="Praticien", font=("Arial", 12, "bold"), bg="white", fg="#0685F6").place(x=50, y=150)
+        idPraticien = Label(Gestion_Frame, text="Praticien", font=("Arial", 12, "bold"), bg="white", fg="#0685F6").place(x=50, y=150)
         
         idDate = Label(Gestion_Frame, text="Date", font=("arial", 12, "bold"), bg="white", fg="#0685F6")
         idDate.place(x=50, y=200)
@@ -132,7 +132,7 @@ class Rapport:
         self.tabl_result.heading(3, text="Motif")
         self.tabl_result.heading(4, text="Bilan")
         self.tabl_result.heading(5, text="Médicament")
-        self.tabl_result.heading(6, text="praticien")
+        self.tabl_result.heading(6, text="Praticien")
 
 
         self.tabl_result["show"]="headings"
