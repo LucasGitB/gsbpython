@@ -57,15 +57,13 @@ class Rapport:
         self.listeM.place(x=220, y=150, width=250)
         self.listeM.current(0)
 
-        idPratitient = Label(Gestion_Frame, text="Pratitien", font=("Arial", 12, "bold"), bg="white", fg="#0685F6").place(x=50, y=150)
+        idPratitient = Label(Gestion_Frame, text="Praticien", font=("Arial", 12, "bold"), bg="white", fg="#0685F6").place(x=50, y=150)
         
-
-
 
 
 ########
         
-        idPratitient = Label(Gestion_Frame, text="Pratitien", font=("Arial", 12, "bold"), bg="white", fg="#0685F6").place(x=50, y=150)
+        idPratitient = Label(Gestion_Frame, text="Praticien", font=("Arial", 12, "bold"), bg="white", fg="#0685F6").place(x=50, y=150)
         
         idDate = Label(Gestion_Frame, text="Date", font=("arial", 12, "bold"), bg="white", fg="#0685F6")
         idDate.place(x=50, y=200)

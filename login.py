@@ -35,7 +35,7 @@ class Connexion:
         self.ecri_email.place(x=50, y=130, width=250)
 
         aff_mdp = Label(frame1, text="Mot de passe", font=("arial", 15, "bold"), bg="white", fg="#0685F6").place(x=50, y=170)
-        self.ecri_mdp = Entry(frame1, font=("arial", 15), bg="white")
+        self.ecri_mdp = Entry(frame1, font=("arial", 15), bg="white", show="•")
         self.ecri_mdp.place(x=50, y=200, width=250)
 
         #valider la connexion
