@@ -92,7 +92,7 @@ class Rapport:
         self.bilan_text.place(x=220, y=300,width=350, height=100)
 
 ######
-        idmedicament = Label(Gestion_Frame, text="Medicament", font=("arial", 12, "bold"), bg="white", fg="#0685F6")
+        idmedicament = Label(Gestion_Frame, text="Médicament", font=("arial", 12, "bold"), bg="white", fg="#0685F6")
         idmedicament.place(x=50, y=430)
 
         id_text = Entry(Gestion_Frame, textvariable=self.medicament, font=("arial", 12), bg="white")
