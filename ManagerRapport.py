@@ -22,8 +22,9 @@ class Rapport:
         Gestion_Frame = Frame(self.root, bd=5, bg="white")
         Gestion_Frame.place(x=50, y=50, width=1500, height=700)
 
-        Gestion_title = Label(Gestion_Frame, text="Compte-rendu", font=("Arial", 20, "bold"), bg="#0685F6", fg="white").place(x=50, y=50)
-
+        Gestion_title = Label(Gestion_Frame, text="Saisie Compte-rendu", font=("Arial", 20, "bold"), bg="#0685F6", fg="white").place(x=50, y=50)
+        Gestion_title = Label(Gestion_Frame, text="Compte-rendu(s) des visiteurs", font=("Arial", 20, "bold")).place(x=800, y=50)
+        Gestion_title = Label(Gestion_Frame, text="Espace Manager", font=("Arial", 20, "bold")).place(x=0, y=0)
 
         #Variable
         self.DateRapport = StringVar()
@@ -34,7 +35,6 @@ class Rapport:
         self.nbrMedicament = StringVar()
         self.Pratiti = StringVar()
         self.id = StringVar()
-
 
         liste = ttk.Combobox(Gestion_Frame, font=("Arial", 13, "bold"), state='readonly')
 
@@ -82,7 +82,7 @@ class Rapport:
         # idid.place(x=50, y=400)
 
         id_text = Entry(Gestion_Frame, textvariable=self.id, font=("arial", 12), bg="white")
-        id_text.place(x=250, y=50, width=30)
+        id_text.place(x=250, y=90, width=30)
 
 ######
         idBilan = Label(Gestion_Frame, text="Bilan", font=("arial", 12, "bold"), bg="white", fg="#0685F6")
@@ -99,6 +99,11 @@ class Rapport:
         id_text.place(x=220, y=430)
 
 # ####
+        idmedicamentNb = Label(Gestion_Frame, text="Quantitée", font=("arial", 12, "bold"), bg="white", fg="#0685F6")
+        idmedicamentNb.place(x=220, y=500)
+
+        id_text = Entry(Gestion_Frame, textvariable=self.nbrMedicament, font=("arial", 12), bg="white")
+        id_text.place(x=390, y=500)
 
 
     #Button ajouter
@@ -119,7 +124,7 @@ class Rapport:
         scroll_x = Scrollbar(result_Frame, orient=HORIZONTAL)
         scroll_y = Scrollbar(result_Frame, orient=VERTICAL)
 
-        self.tabl_result = ttk.Treeview(result_Frame, columns= (1,2,3,4,5,6), xscrollcommand=scroll_x.set, yscrollcommand=scroll_y.set)
+        self.tabl_result = ttk.Treeview(result_Frame, columns= (1,2,3,4,5,6,7), xscrollcommand=scroll_x.set, yscrollcommand=scroll_y.set)
 
         scroll_x.pack(side=BOTTOM, fill=X)
         scroll_y.pack(side=RIGHT, fill=Y)
@@ -129,7 +134,8 @@ class Rapport:
         self.tabl_result.heading(3, text="Motif")
         self.tabl_result.heading(4, text="Bilan")
         self.tabl_result.heading(5, text="Médicament")
-        self.tabl_result.heading(6, text="Praticien")
+        self.tabl_result.heading(6, text="Quantitée")
+        self.tabl_result.heading(7, text="Praticien")
 
 
         self.tabl_result["show"]="headings"
@@ -137,9 +143,10 @@ class Rapport:
         self.tabl_result.column(1, width=100)
         self.tabl_result.column(2, width=100)
         self.tabl_result.column(3, width=100)
-        self.tabl_result.column(4, width=300)
+        self.tabl_result.column(4, width=200)
         self.tabl_result.column(5, width=100)
         self.tabl_result.column(6, width=100)
+        self.tabl_result.column(7, width=100)
 
 
         self.tabl_result.pack()
@@ -250,7 +257,7 @@ class Rapport:
         contents = self.tabl_result.item(cursors_row)
         row = contents["values"]
         self.id.set(row[0]),
-        self.Pratiti.set(row[5]),
+        self.Pratiti.set(row[6]),
         self.DateRapport.set(row[1]),
         self.MotifVisite.set(row[2]),
 
@@ -260,6 +267,7 @@ class Rapport:
 
 
         self.medicament.set(row[4]),
+        self.nbrMedicament.set(row[5]),
 
 
     def modifier(self):
@@ -267,13 +275,14 @@ class Rapport:
             
             conn = i.idBdd
             cursor = conn.cursor()
-            cursor.execute('update rapport set DateRapport=%s, MotifVisite=%s, Bilan=%s, medicament=%s, praticien=%s where idRapport=%s',  
+            cursor.execute('update rapport set DateRapport=%s, MotifVisite=%s, Bilan=%s, medicament=%s, nombre=%s, praticien=%s where idRapport=%s',  
             (
                 
                 self.DateRapport.get(),
                 self.MotifVisite.get(),
                 self.bilan_text.get("1.0", END),
                 self.medicament.get(),
+                self.nbrMedicament.get(),
                 self.Pratiti.get(),
                 self.id.get()
             ))
