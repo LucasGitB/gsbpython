@@ -23,7 +23,7 @@ class Rapport:
         Gestion_Frame.place(x=50, y=50, width=1500, height=700)
 
         Gestion_title = Label(Gestion_Frame, text="Saisie Compte-rendu", font=("Arial", 20, "bold"), bg="#0685F6", fg="white").place(x=50, y=50)
-        Gestion_title = Label(Gestion_Frame, text="Compte-rendu(s)", font=("Arial", 20, "bold")).place(x=800, y=50)
+        Gestion_title = Label(Gestion_Frame, text="Compte(s)-rendu(s)", font=("Arial", 20, "bold")).place(x=800, y=50)
         Gestion_title = Label(Gestion_Frame, text="Espace visiteur", font=("Arial", 20, "bold")).place(x=0, y=0)
 
         #Variable
