@@ -33,7 +33,7 @@ class Rapport:
         self.Prescription = StringVar()
         self.medicament = StringVar()
         self.nbrMedicament = StringVar()
-        self.Pratiti = StringVar()
+        self.Praticien = StringVar()
         self.id = StringVar()
 
         liste = ttk.Combobox(Gestion_Frame, font=("Arial", 13, "bold"), state='readonly')
@@ -52,7 +52,7 @@ class Rapport:
         # print(lstVal)
         valuesLst = lstVal.split(',')
         
-        self.listeM = ttk.Combobox(Gestion_Frame, textvariable=self.Pratiti, font=("arial", 12), state="readonly")
+        self.listeM = ttk.Combobox(Gestion_Frame, textvariable=self.Praticien, font=("arial", 12), state="readonly")
         self.listeM['values'] = valuesLst
         self.listeM.place(x=220, y=150, width=250)
         self.listeM.current(0)
@@ -155,54 +155,8 @@ class Rapport:
 
         self.afficherActuRapport()
 
-
-
-
-
-        # tree = ttk.Treeview(root, columns= (1,2,3,4,5), height=5, show = "headings")
-        # tree.place(x=650, y = 170, width=800, height=175)
-
-        # tree.heading(1, text= "Date")
-        # tree.heading(2, text= "Motif")
-        # tree.heading(3, text= "Bilan")
-        # tree.heading(4, text= "Medicament")
-        # tree.heading(5, text= "IdVisiteur")
-
-        # tree.column(1, width=50)
-        # tree.column(2, width=50)
-        # tree.column(3, width=100)
-        # tree.column(4, width=100)
-        # tree.column(5, width=50)
-
-        # tree.bind(self.information)
-
-
-
-
-
-
-
-        # conn = i.idBdd
-        # cursor = conn.cursor()
-        # idVisiteur = idUser
-        # cursor.execute('select * from rapport where idVisiteur = {}'.format(idUser))
-
-        
-        # rapportlist = cursor.fetchall()
-
-
-
-        # for rapport in rapportlist:
-        #     self.tabl_result.insert('', END, values= rapport)
-
-        # conn.commit()
-     
- 
-
-
-      
     def creer(self):
-            if self.Pratiti.get()=="":
+            if self.Praticien.get()=="":
                 messagebox.showerror("erreur", "remplir les champs", parent=self.root)
             else:
             
@@ -216,26 +170,13 @@ class Rapport:
                     self.bilan_text.get("1.0", END),
                     self.medicament.get(),
                     self.user,
-                    self.Pratiti.get(),
+                    self.Praticien.get(),
                 ))
             idUser = self.user
             conn.commit()
             self.afficherActuRapport()
             messagebox.showinfo('succes', "Rapport ajouté !")
             conn.close()
-
-
-    # def afficherActuRapport(self):
-    #     conn = i.idBdd
-    #     cursor = conn.cursor()
-    #     idUser = self.user
-    #     idVisiteur = idUser
-    #     cursor.execute('select * from rapport where idVisiteur = {}'.format(idUser))
-    #     rapportlist = cursor.fetchall()
-    #     for rapport in rapportlist:
-    #         self.tabl_result.insert('', END, values= rapport)
-
-    #     conn.commit()
 
 
     def afficherActuRapport(self):
@@ -257,7 +198,7 @@ class Rapport:
         contents = self.tabl_result.item(cursors_row)
         row = contents["values"]
         self.id.set(row[0]),
-        self.Pratiti.set(row[6]),
+        self.Praticien.set(row[6]),
         self.DateRapport.set(row[1]),
         self.MotifVisite.set(row[2]),
 
@@ -283,7 +224,7 @@ class Rapport:
                 self.bilan_text.get("1.0", END),
                 self.medicament.get(),
                 self.nbrMedicament.get(),
-                self.Pratiti.get(),
+                self.Praticien.get(),
                 self.id.get()
             ))
             
