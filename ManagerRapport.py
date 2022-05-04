@@ -63,7 +63,7 @@ class Rapport:
         
         idPraticien = Label(Gestion_Frame, text="Praticien", font=("Arial", 12, "bold"), bg="white", fg="#0685F6").place(x=50, y=150)
         
-        idDate = Label(Gestion_Frame, text="Date", font=("arial", 12, "bold"), bg="white", fg="#0685F6")
+        idDate = Label(Gestion_Frame, text="Date (JJ/MM/AAAA)", font=("arial", 12, "bold"), bg="white", fg="#0685F6")
         idDate.place(x=50, y=200)
         
 
@@ -99,11 +99,11 @@ class Rapport:
         id_text.place(x=220, y=430)
 
 # ####
-        idmedicamentNb = Label(Gestion_Frame, text="Quantitée", font=("arial", 12, "bold"), bg="white", fg="#0685F6")
-        idmedicamentNb.place(x=220, y=500)
+        idmedicamentNb = Label(Gestion_Frame, text="Quantité", font=("arial", 12, "bold"), bg="white", fg="#0685F6")
+        idmedicamentNb.place(x=50, y=480)
 
         id_text = Entry(Gestion_Frame, textvariable=self.nbrMedicament, font=("arial", 12), bg="white")
-        id_text.place(x=390, y=500)
+        id_text.place(x=220, y=480)
 
 
     #Button ajouter
@@ -134,7 +134,7 @@ class Rapport:
         self.tabl_result.heading(3, text="Motif")
         self.tabl_result.heading(4, text="Bilan")
         self.tabl_result.heading(5, text="Médicament")
-        self.tabl_result.heading(6, text="Quantitée")
+        self.tabl_result.heading(6, text="Quantité")
         self.tabl_result.heading(7, text="Praticien")
 
 
