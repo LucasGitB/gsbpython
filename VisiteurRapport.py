@@ -160,9 +160,11 @@ class Rapport:
 
       
     def creer(self):
-            if self.Praticien.get()=="":
+            if self.Praticien.get()=="" or self.DateRapport.get()=="" or self.MotifVisite.get()=="" or self.Bilan.get()=="" or self.Prescription.get()=="" or self.medicament.get()=="" or self.nbrMedicament.get()=="" or self.quantite.get()=="":
                 messagebox.showerror("erreur", "remplir les champs", parent=self.root)
             else:
+
+
             
                 conn = i.idBdd
                 cursor = conn.cursor()
@@ -236,7 +238,7 @@ class Rapport:
             
             conn.commit()
             self.afficherActuRapport()
-            messagebox.showinfo('succes', "Modif ajouté !")
+            messagebox.showinfo('succes', "Modification ajoutée !")
             conn.close()
 
     def supprimer(self):
@@ -248,7 +250,7 @@ class Rapport:
   
             conn.commit()
             self.afficherActuRapport()
-            messagebox.showinfo('succes', "supprimé ajouté !")
+            messagebox.showinfo('succes', "Rapport supprimé !")
             conn.close()
         
 

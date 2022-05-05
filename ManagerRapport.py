@@ -230,7 +230,7 @@ class Rapport:
             
             conn.commit()
             self.afficherActuRapport()
-            messagebox.showinfo('succes', "Modif ajouté !")
+            messagebox.showinfo('succes', "Modification ajoutée !")
             conn.close()
 
     def supprimer(self):
@@ -242,7 +242,7 @@ class Rapport:
   
             conn.commit()
             self.afficherActuRapport()
-            messagebox.showinfo('succes', "supprimé ajouté !")
+            messagebox.showinfo('succes', "Rapport supprimé !")
             conn.close()
         
 
