@@ -160,11 +160,10 @@ class Rapport:
 
       
     def creer(self):
-            if self.Praticien.get()=="" or self.DateRapport.get()=="" or self.MotifVisite.get()=="" or self.Bilan.get()=="" or self.Prescription.get()=="" or self.medicament.get()=="" or self.nbrMedicament.get()=="" or self.quantite.get()=="":
+            if self.Praticien.get()=="" or self.DateRapport.get()=="" or self.MotifVisite.get()=="" or self.bilan_text.get("1.0", END)=="" or self.medicament.get()=="" or self.nbrMedicament.get()=="":
+                
                 messagebox.showerror("erreur", "remplir les champs", parent=self.root)
             else:
-
-
             
                 conn = i.idBdd
                 cursor = conn.cursor()
